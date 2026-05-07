@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Computer Programmer & Cybersecurity Specialist — Building secure, real-time systems that scale.">
+<meta property="og:title" content="Dev Portfolio | Security Engineer">
+<meta property="og:description" content="I build secure, real-time systems that scale.">
+<title>Portfolio | Cybersecurity & Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg0: #020207;
+  --bg1: #08080f;
+  --bg2: #0d0d18;
+  --bg3: #121220;
+  --card: #0f0f1c;
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(0,229,255,0.25);
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.15);
+  --pink: #ff2055;
+  --pink-dim: rgba(255,32,85,0.15);
+  --gold: #ffc837;
+  --gold-dim: rgba(255,200,55,0.12);
+  --green: #00e676;
+  --green-dim: rgba(0,230,118,0.12);
+  --purple: #bf5af2;
+  --text1: #eeeef8;
+  --text2: #9090b8;
+  --text3: #555578;
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --glow-cyan: 0 0 30px rgba(0,229,255,0.2);
+  --glow-pink: 0 0 30px rgba(255,32,85,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg0);color:var(--text1);font-family:var(--font-body);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--cyan-dim);color:var(--cyan)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg1)}
+::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border .3s}
+nav.scrolled{background:rgba(2,2,7,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--cyan);letter-spacing:.15em;text-decoration:none}
+.nav-logo span{color:var(--pink)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--cyan);transition:width .2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:.4rem 1rem;border-radius:6px;font-family:var(--font-body);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-cta:hover{background:var(--cyan-dim);box-shadow:var(--glow-cyan)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.menu-toggle span{width:22px;height:1.5px;background:var(--text1);display:block;transition:all .3s}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#particle-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:0 1.5rem;max-width:900px;margin:0 auto}
+.avail-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-dim);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;padding:.35rem .9rem;border-radius:100px;margin-bottom:2rem}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse-green 2s infinite}
+.hero-name{font-family:var(--font-display);font-size:clamp(2.8rem,8vw,6rem);font-weight:900;line-height:1;letter-spacing:.05em;margin-bottom:.5rem;position:relative;background:linear-gradient(135deg,#fff 0%,var(--cyan) 50%,#fff 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s ease infinite}
+.hero-role{font-family:var(--font-mono);font-size:clamp(.85rem,2vw,1.05rem);color:var(--cyan);letter-spacing:.12em;margin-bottom:1.5rem;opacity:.9}
+.hero-tagline{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:600;color:var(--text1);margin-bottom:2.5rem;min-height:2.4rem}
+.typed-text{color:var(--cyan)}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);vertical-align:text-bottom;animation:blink .75s step-end infinite}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--cyan);color:#000;font-family:var(--font-body);font-weight:700;font-size:.9rem;letter-spacing:.05em;padding:.75rem 1.75rem;border-radius:8px;text-decoration:none;transition:all .25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,255,0.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--text1);font-family:var(--font-body);font-weight:700;font-size:.9rem;letter-spacing:.05em;padding:.75rem 1.75rem;border-radius:8px;border:1px solid var(--border-bright);text-decoration:none;transition:all .25s}
+.btn-secondary:hover{background:var(--cyan-dim);color:var(--cyan);border-color:var(--cyan);transform:translateY(-2px)}
+.hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-num{display:block;font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--cyan)}
+.hstat-label{font-size:.75rem;color:var(--text3);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;animation:float 3s ease-in-out infinite}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--cyan),transparent)}
+.scroll-label{font-family:var(--font-mono);font-size:.65rem;color:var(--text3);letter-spacing:.15em;text-transform:uppercase}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:.75rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'//';opacity:.5}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.15;margin-bottom:1rem}
+.section-title span{color:var(--cyan)}
+.section-desc{color:var(--text2);font-size:1.05rem;max-width:600px;line-height:1.7;margin-bottom:3rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* LIVE ACTIVITY */
+#activity{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.activity-panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.panel-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-family:var(--font-mono);font-size:.8rem;font-weight:500;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse-green 1.5s infinite}
+.panel-body{padding:1rem 1.25rem;height:260px;overflow:hidden;position:relative}
+.activity-item{padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:.75rem;font-family:var(--font-mono);font-size:.75rem;animation:slideInItem .4s ease}
+.activity-item:last-child{border-bottom:none}
+.ai-time{color:var(--text3);min-width:45px;flex-shrink:0}
+.ai-msg{color:var(--text2);line-height:1.5}
+.ai-tag{display:inline-block;padding:.1rem .4rem;border-radius:3px;font-size:.65rem;margin-right:.25rem;font-weight:500}
+.tag-push{background:var(--cyan-dim);color:var(--cyan)}
+.tag-fix{background:var(--green-dim);color:var(--green)}
+.tag-warn{background:var(--gold-dim);color:var(--gold)}
+.tag-crit{background:var(--pink-dim);color:var(--pink)}
+.tag-info{background:rgba(191,90,242,0.15);color:var(--purple)}
+.log-line{font-family:var(--font-mono);font-size:.73rem;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;gap:.75rem}
+.log-time{color:var(--text3);min-width:55px}
+.log-level-ok{color:var(--green)}
+.log-level-warn{color:var(--gold)}
+.log-level-err{color:var(--pink)}
+.log-msg{color:var(--text2)}
+.project-status{display:flex;flex-direction:column;gap:.75rem;height:100%;justify-content:center}
+.ps-item{display:flex;align-items:center;justify-content:space-between;padding:.65rem .85rem;background:var(--bg3);border-radius:8px;border:1px solid var(--border)}
+.ps-name{font-family:var(--font-mono);font-size:.78rem;color:var(--text2)}
+.ps-metric{font-family:var(--font-mono);font-size:.78rem;color:var(--cyan)}
+.ps-bar{width:100%;height:3px;background:var(--border);border-radius:2px;margin-top:.4rem;overflow:hidden}
+.ps-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:width 1s ease}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s,transform .3s;position:relative;display:flex;flex-direction:column}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--cyan-dim),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
+.project-card:hover{border-color:var(--border-bright);transform:translateY(-4px);box-shadow:var(--glow-cyan)}
+.project-card:hover::before{opacity:1}
+.project-card.featured{border-color:rgba(0,229,255,0.2)}
+.project-thumb{height:180px;position:relative;overflow:hidden}
+.project-canvas{width:100%;height:100%;display:block}
+.project-badge{position:absolute;top:.75rem;right:.75rem;background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.3);color:var(--cyan);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;padding:.2rem .6rem;border-radius:4px;text-transform:uppercase}
+.project-badge.security{background:var(--pink-dim);border-color:rgba(255,32,85,0.3);color:var(--pink)}
+.project-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.project-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:var(--text1)}
+.project-desc{color:var(--text2);font-size:.9rem;line-height:1.65;margin-bottom:1rem;flex:1}
+.project-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.25rem}
+.metric-box{background:var(--bg3);border-radius:8px;padding:.6rem .5rem;text-align:center;border:1px solid var(--border)}
+.metric-val{display:block;font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--gold)}
+.metric-label{font-family:var(--font-mono);font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.tech-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.tech-badge{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2);font-family:var(--font-mono);font-size:.7rem;padding:.2rem .55rem;border-radius:4px}
+.challenge-toggle{background:transparent;border:none;color:var(--cyan);font-family:var(--font-mono);font-size:.75rem;cursor:pointer;padding:0;display:flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.challenge-toggle:hover{opacity:.8}
+.challenge-content{display:none;margin-top:.75rem;padding:.75rem;background:var(--bg3);border-radius:8px;border-left:2px solid var(--cyan);font-size:.82rem;color:var(--text2);line-height:1.65}
+.challenge-content.open{display:block;animation:fadeIn .3s ease}
+.project-links{display:flex;gap:.75rem;margin-top:1rem}
+.proj-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;text-decoration:none;color:var(--text2);border:1px solid var(--border);padding:.4rem .9rem;border-radius:6px;transition:all .2s}
+.proj-link:hover{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-dim)}
+.proj-link.primary{color:var(--cyan);border-color:var(--border-bright)}
+
+/* SECURITY */
+#security{background:var(--bg1)}
+.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.sec-visual{position:sticky;top:6rem}
+.vuln-terminal{background:#000;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.terminal-header{background:#1a1a1a;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.terminal-body{padding:1.25rem;font-family:var(--font-mono);font-size:.78rem;line-height:1.9}
+.t-comment{color:#555}
+.t-cmd{color:var(--cyan)}
+.t-output{color:#aaa}
+.t-ok{color:var(--green)}
+.t-warn{color:var(--gold)}
+.t-err{color:var(--pink)}
+.t-prompt{color:var(--purple)}
+.sec-items{display:flex;flex-direction:column;gap:1.5rem}
+.sec-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color .3s}
+.sec-item:hover{border-color:var(--border-bright)}
+.sec-item-header{display:flex;align-items:center;gap:.75rem;margin-bottom.75rem}
+.sec-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.sec-icon.red{background:var(--pink-dim)}
+.sec-icon.cyan{background:var(--cyan-dim)}
+.sec-icon.gold{background:var(--gold-dim)}
+.sec-item-title{font-weight:700;font-size:1rem;margin-bottom:.25rem}
+.sec-item-sub{font-family:var(--font-mono);font-size:.72rem;color:var(--text3)}
+.sec-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top.75rem}
+.ba-box{padding:.75rem;border-radius:8px;font-family:var(--font-mono);font-size:.73rem;line-height:1.7}
+.ba-before{background:rgba(255,32,85,0.07);border:1px solid rgba(255,32,85,0.2)}
+.ba-after{background:rgba(0,230,118,0.07);border:1px solid rgba(0,230,118,0.2)}
+.ba-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;font-weight:600}
+.ba-before .ba-label{color:var(--pink)}
+.ba-after .ba-label{color:var(--green)}
+.ba-code{color:var(--text2)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.skill-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s,transform .3s}
+.skill-item:hover{border-color:var(--border-bright);transform:translateY(-2px)}
+.skill-icon{width:44px;height:44px;border-radius:10px;background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.skill-icon.pink{background:var(--pink-dim);border-color:rgba(255,32,85,0.2)}
+.skill-icon.gold{background:var(--gold-dim);border-color:rgba(255,200,55,0.2)}
+.skill-icon.purple{background:rgba(191,90,242,0.12);border-color:rgba(191,90,242,0.2)}
+.skill-content .skill-name{font-weight:700;font-size:.95rem;margin-bottom:.3rem;color:var(--text1)}
+.skill-proof{font-size:.83rem;color:var(--text2);line-height:1.55}
+.skill-proof strong{color:var(--cyan)}
+
+/* CASE STUDIES */
+.case-list{display:flex;flex-direction:column;gap:2rem}
+.case-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .3s}
+.case-item:hover{border-color:var(--border-bright)}
+.case-header{padding:1.75rem;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.case-num{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--border);line-height:1;flex-shrink:0;min-width:60px}
+.case-meta{flex:1}
+.case-title{font-size:1.25rem;font-weight:700;margin-bottom:.35rem}
+.case-sub{color:var(--text3);font-family:var(--font-mono);font-size:.78rem}
+.case-arrow{color:var(--text3);transition:transform .3s;flex-shrink:0;margin-top:4px}
+.case-item.open .case-arrow{transform:rotate(90deg)}
+.case-item.open .case-num{color:var(--cyan)}
+.case-body{display:none;border-top:1px solid var(--border)}
+.case-body.open{display:block;animation:fadeIn .3s ease}
+.case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--border)}
+.case-col{padding:1.5rem;border-right:1px solid var(--border)}
+.case-col:last-child{border-right:none}
+.case-col-label{font-family:var(--font-mono);font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem}
+.case-col-text{font-size:.88rem;color:var(--text2);line-height:1.65}
+.case-col-text strong{color:var(--text1)}
+.case-results{padding:1.25rem 1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.case-result-chip{display:flex;align-items:center;gap:.5rem;background:var(--green-dim);border:1px solid rgba(0,230,118,0.2);padding:.4rem .85rem;border-radius:100px}
+.crc-icon{font-size:.9rem}
+.crc-text{font-family:var(--font-mono);font-size:.75rem;color:var(--green)}
+
+/* CONTACT */
+#contact{background:var(--bg1)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-info{}
+.contact-intro{color:var(--text2);font-size:1rem;line-height:1.7;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;transition:border-color .2s,background .2s;color:inherit}
+.contact-link:hover{border-color:var(--border-bright);background:var(--cyan-dim)}
+.cl-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cl-label{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em}
+.cl-value{font-weight:600;font-size:.9rem;color:var(--text1)}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem}
+.form-row{margin-bottom:1.25rem}
+.form-row label{display:block;font-family:var(--font-mono);font-size:.73rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text1);font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .2s;resize:none}
+.form-row input:focus,.form-row textarea:focus{border-color:var(--cyan)}
+.form-row textarea{height:130px}
+.form-submit{width:100%;background:var(--cyan);color:#000;border:none;padding:.85rem;border-radius:8px;font-family:var(--font-body);font-weight:700;font-size:.95rem;cursor:pointer;transition:all .25s;letter-spacing:.03em}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,255,0.3)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-success{display:none;text-align:center;padding:1rem;background:var(--green-dim);border:1px solid rgba(0,230,118,0.3);border-radius:8px;color:var(--green);font-family:var(--font-mono);font-size:.85rem;margin-top:.75rem}
+
+/* FOOTER */
+footer{background:var(--bg0);border-top:1px solid var(--border);padding:2rem;text-align:center}
+.footer-text{font-family:var(--font-mono);font-size:.75rem;color:var(--text3)}
+.footer-text span{color:var(--cyan)}
+
+/* AI CHATBOT */
+.chat-trigger{position:fixed;bottom:2rem;right:2rem;z-index:200;width:56px;height:56px;border-radius:50%;background:var(--cyan);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,229,255,0.35);transition:all .3s;font-size:1.4rem}
+.chat-trigger:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(0,229,255,0.5)}
+.chat-window{position:fixed;bottom:6rem;right:2rem;z-index:200;width:360px;background:var(--bg2);border:1px solid var(--border-bright);border-radius:var(--radius);overflow:hidden;display:none;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,0.6),var(--glow-cyan);max-height:520px}
+.chat-window.open{display:flex;animation:slideUp .3s ease}
+.chat-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.chat-head-info{display:flex;align-items:center;gap:.75rem}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--cyan-dim);border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-head-name{font-weight:700;font-size:.9rem}
+.chat-head-status{font-family:var(--font-mono);font-size:.68rem;color:var(--green)}
+.chat-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
+.chat-close:hover{color:var(--text1)}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:200px}
+.chat-msg{max-width:85%;font-size:.85rem;line-height:1.55;padding:.65rem .9rem;border-radius:12px;animation:fadeIn .3s ease}
+.msg-bot{align-self:flex-start;background:var(--bg3);border:1px solid var(--border);color:var(--text2)}
+.msg-user{align-self:flex-end;background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.25);color:var(--text1)}
+.chat-suggestions{padding:.75rem;display:flex;gap:.5rem;flex-wrap:wrap;border-top:1px solid var(--border)}
+.chat-suggest{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:var(--font-mono);font-size:.68rem;padding:.3rem .65rem;border-radius:6px;cursor:pointer;transition:all .2s}
+.chat-suggest:hover{border-color:var(--cyan);color:var(--cyan)}
+.chat-input-row{padding:.75rem;border-top:1px solid var(--border);display:flex;gap:.5rem}
+.chat-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.5rem .85rem;color:var(--text1);font-family:var(--font-body);font-size:.85rem;outline:none;transition:border-color .2s}
+.chat-input:focus{border-color:var(--cyan)}
+.chat-send{background:var(--cyan);border:none;color:#000;width:36px;height:36px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;transition:opacity .2s}
+.chat-send:hover{opacity:.85}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
+.chat-typing{font-family:var(--font-mono);font-size:.75rem;color:var(--text3);padding:0 .5rem;display:flex;align-items:center;gap:.4rem;min-height:20px}
+.typing-dot{width:5px;height:5px;border-radius:50%;background:var(--cyan);display:inline-block;animation:typing-bounce .9s infinite}
+.typing-dot:nth-child(2){animation-delay:.15s}
+.typing-dot:nth-child(3){animation-delay:.3s}
+
+/* ANIMATIONS */
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes pulse-green{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,230,118,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(0,230,118,0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideInItem{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+@keyframes scanline{0%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+/* GRID SEPARATOR */
+.section-sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 2rem}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .activity-grid{grid-template-columns:1fr}
+  .activity-panel:not(:first-child){display:none}
+  .security-grid{grid-template-columns:1fr}
+  .sec-visual{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr 1fr}
+  .case-col:nth-child(3){border-right:none}
+  .case-col:nth-child(3),.case-col:nth-child(4){border-top:1px solid var(--border)}
+}
+@media(max-width:640px){
+  nav{padding:0 1.25rem}
+  .nav-links{display:none}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(2,2,7,.97);padding:1.5rem;border-bottom:1px solid var(--border);gap:1rem}
+  .menu-toggle{display:flex}
+  section{padding:4rem 1.25rem}
+  .projects-grid{grid-template-columns:1fr}
+  .project-metrics{grid-template-columns:repeat(3,1fr)}
+  .case-grid{grid-template-columns:1fr}
+  .case-col{border-right:none;border-top:1px solid var(--border)}
+  .case-col:first-child{border-top:none}
+  .chat-window{width:calc(100vw - 2rem);right:1rem}
+  .hero-stats{gap:1.5rem}
+  .security-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">DEV<span>SEC</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#activity">Live</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="avail-badge"><span class="avail-dot"></span>AVAILABLE FOR REMOTE WORK</div>
+    <h1 class="hero-name" id="hero-name">DAVID JOEL</h1>
+    <div class="hero-role">Computer Programmer &amp; Cybersecurity Specialist</div>
+    <p class="hero-tagline">I build <span class="typed-text" id="typed-text"></span><span class="cursor"></span></p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">⚡ View Projects</a>
+      <a href="#contact" class="btn-secondary">✉ Contact Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num">50+</span><span class="hstat-label">Projects</span></div>
+      <div class="hstat"><span class="hstat-num">3+</span><span class="hstat-label">Years Exp</span></div>
+      <div class="hstat"><span class="hstat-num">99.9%</span><span class="hstat-label">Uptime</span></div>
+      <div class="hstat"><span class="hstat-num">0</span><span class="hstat-label">Breaches</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <div class="scroll-label">Scroll</div>
+  </div>
+</section>
+
+<!-- LIVE ACTIVITY -->
+<section id="activity">
+  <div class="container">
+    <div class="section-label">Real-Time Activity</div>
+    <h2 class="section-title" style="margin-bottom:2rem">Live <span>Engineering Feed</span></h2>
+    <div class="activity-grid">
+      <!-- GitHub Commits -->
+      <div class="activity-panel reveal">
+        <div class="panel-header">
+          <div class="panel-title"><span class="live-dot"></span> GitHub Commits</div>
+          <span style="font-family:var(--font-mono);font-size:.7rem;color:var(--text3)">just now</span>
+        </div>
+        <div class="panel-body" id="commit-feed"></div>
+      </div>
+      <!-- Active Projects -->
+      <div class="activity-panel reveal">
+        <div class="panel-header">
+          <div class="panel-title"><span class="live-dot"></span> Active Projects</div>
+          <span style="font-family:var(--font-mono);font-size:.7rem;color:var(--text3)">5 running</span>
+        </div>
+        <div class="panel-body" id="project-feed">
+          <div class="project-status">
+            <div class="ps-item">
+              <div>
+                <div class="ps-name">trading-bot-v2</div>
+                <div class="ps-bar"><div class="ps-bar-fill" style="width:87%"></div></div>
+              </div>
+              <div class="ps-metric" id="p1-metric">87% uptime</div>
+            </div>
+            <div class="ps-item">
+              <div>
+                <div class="ps-name">sec-scanner</div>
+                <div class="ps-bar"><div class="ps-bar-fill" style="width:100%"></div></div>
+              </div>
+              <div class="ps-metric" id="p2-metric">ACTIVE</div>
+            </div>
+            <div class="ps-item">
+              <div>
+                <div class="ps-name">rt-dashboard</div>
+                <div class="ps-bar"><div class="ps-bar-fill" style="width:73%"></div></div>
+              </div>
+              <div class="ps-metric" id="p3-metric">12k req/min</div>
+            </div>
+            <div class="ps-item">
+              <div>
+                <div class="ps-name">api-gateway</div>
+                <div class="ps-bar"><div class="ps-bar-fill" style="width:60%"></div></div>
+              </div>
+              <div class="ps-metric" id="p4-metric">~8ms p99</div>
+            </div>
+            <div class="ps-item">
+              <div>
+                <div class="ps-name">auth-service</div>
+                <div class="ps-bar"><div class="ps-bar-fill" style="width:95%"></div></div>
+              </div>
+              <div class="ps-metric" id="p5-metric">0 failures</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- System Logs -->
+      <div class="activity-panel reveal">
+        <div class="panel-header">
+          <div class="panel-title"><span class="live-dot"></span> System Logs</div>
+          <span style="font-family:var(--font-mono);font-size:.7rem;color:var(--text3)">streaming</span>
+        </div>
+        <div class="panel-body" id="log-feed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">Featured Work</div>
+    <h2 class="section-title reveal">Production-Grade <span>Projects</span></h2>
+    <p class="section-desc reveal">Real systems solving real problems — with numbers to prove it.</p>
+    <div class="projects-grid">
+
+      <!-- Project 1: Trading Bot -->
+      <div class="project-card featured reveal">
+        <div class="project-thumb">
+          <canvas class="project-canvas" id="canvas-trading" width="400" height="180"></canvas>
+          <span class="project-badge">Fintech</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Algorithmic Trading Bot</div>
+          <p class="project-desc">Automated crypto trading system using multi-strategy execution (momentum, mean-reversion, arbitrage). Features real-time WebSocket feeds, risk management engine, and fault-tolerant order execution.</p>
+          <div class="project-metrics">
+            <div class="metric-box"><span class="metric-val counter" data-target="340">0</span><span class="metric-label">ms latency</span></div>
+            <div class="metric-box"><span class="metric-val counter" data-target="27">0</span><span class="metric-label">% ROI</span></div>
+            <div class="metric-box"><span class="metric-val">99.9<span style="font-size:.7rem">%</span></span><span class="metric-label">Uptime</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Node.js</span><span class="tech-badge">WebSockets</span><span class="tech-badge">Redis</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">Binance API</span>
+          </div>
+          <button class="challenge-toggle" onclick="toggleChallenge(this)">▶ Engineering Challenges</button>
+          <div class="challenge-content">
+            <strong style="color:var(--cyan)">Challenge:</strong> Race conditions during simultaneous order placement across 3 exchanges caused duplicate fills, risking 12% daily loss.<br><br>
+            <strong style="color:var(--green)">Solution:</strong> Implemented distributed locking with Redis SETNX + TTL, idempotent order IDs, and a circuit-breaker pattern that halts trading on anomaly detection within 50ms.
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link primary">⚡ Live Demo</a>
+            <a href="#" class="proj-link">⌥ GitHub</a>
+            <a href="#case-studies" class="proj-link">📋 Case Study</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Security Scanner -->
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas class="project-canvas" id="canvas-security" width="400" height="180"></canvas>
+          <span class="project-badge security">Security Tool</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Automated Vulnerability Scanner</div>
+          <p class="project-desc">Full-stack security scanner performing OWASP Top 10 checks, CVE database lookups, misconfiguration detection, and generates remediation reports with severity scoring.</p>
+          <div class="project-metrics">
+            <div class="metric-box"><span class="metric-val counter" data-target="2400">0</span><span class="metric-label">CVEs/day</span></div>
+            <div class="metric-box"><span class="metric-val counter" data-target="94">0</span><span class="metric-label">% accuracy</span></div>
+            <div class="metric-box"><span class="metric-val counter" data-target="8">0</span><span class="metric-label">sec scan</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Python</span><span class="tech-badge">Nmap</span><span class="tech-badge">Shodan API</span><span class="tech-badge">MongoDB</span><span class="tech-badge">FastAPI</span><span class="tech-badge">React</span>
+          </div>
+          <button class="challenge-toggle" onclick="toggleChallenge(this)">▶ Engineering Challenges</button>
+          <div class="challenge-content">
+            <strong style="color:var(--cyan)">Challenge:</strong> Scanning 10k+ hosts concurrently without triggering IDS/IPS detection or overloading network interfaces.<br><br>
+            <strong style="color:var(--green)">Solution:</strong> Built adaptive rate-limiting with exponential backoff, randomized scan order, and traffic shaping. Achieved 94% detection rate while staying below alert thresholds.
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link primary">⚡ Live Demo</a>
+            <a href="#" class="proj-link">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Real-Time Dashboard -->
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          <canvas class="project-canvas" id="canvas-dashboard" width="400" height="180"></canvas>
+          <span class="project-badge">Real-Time</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Real-Time Analytics Dashboard</div>
+          <p class="project-desc">High-throughput analytics platform processing IoT sensor streams. Features sub-second alerting, time-series visualization, and anomaly detection for industrial monitoring.</p>
+          <div class="project-metrics">
+            <div class="metric-box"><span class="metric-val">10k<span style="font-size:.7rem">+</span></span><span class="metric-label">updates/min</span></div>
+            <div class="metric-box"><span class="metric-val"><span class="counter" data-target="45">0</span>ms</span><span class="metric-label">p99 latency</span></div>
+            <div class="metric-box"><span class="metric-val counter" data-target="500">0</span><span class="metric-label">clients</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">React</span><span class="tech-badge">TypeScript</span><span class="tech-badge">WebSockets</span><span class="tech-badge">InfluxDB</span><span class="tech-badge">Kafka</span><span class="tech-badge">Grafana</span>
+          </div>
+          <button class="challenge-toggle" onclick="toggleChallenge(this)">▶ Engineering Challenges</button>
+          <div class="challenge-content">
+            <strong style="color:var(--cyan)">Challenge:</strong> React re-renders causing 60ms frame drops when handling 10k+ updates per minute from 500 concurrent WebSocket clients.<br><br>
+            <strong style="color:var(--green)">Solution:</strong> Implemented virtual DOM batching, Web Workers for data processing, and a custom ring buffer for time-series data. Achieved consistent 60fps with 45ms p99 latency.
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link primary">⚡ Live Demo</a>
+            <a href="#" class="proj-link">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- SECURITY -->
+<section id="security">
+  <div class="container">
+    <div class="section-label reveal">Cybersecurity</div>
+    <h2 class="section-title reveal">Offense-Informed <span>Defense</span></h2>
+    <p class="section-desc reveal">Penetration testing experience that makes my code hardened by default, not patched in hindsight.</p>
+    <div class="security-grid">
+      <div class="sec-visual reveal">
+        <div class="vuln-terminal">
+          <div class="terminal-header">
+            <div class="t-dot" style="background:#ff5f56"></div>
+            <div class="t-dot" style="background:#ffbd2e"></div>
+            <div class="t-dot" style="background:#27c93f"></div>
+            <span style="font-family:var(--font-mono);font-size:.72rem;color:#555;margin-left:.5rem">pentest-session.sh</span>
+          </div>
+          <div class="terminal-body" id="terminal-output">
+            <div class="t-comment"># SQL Injection vulnerability assessment</div>
+            <div class="t-prompt">$ <span class="t-cmd">sqlmap -u "http://target/api/user?id=1" --dbs</span></div>
+            <div class="t-output">[*] starting at 14:32:07</div>
+            <div class="t-output">[+] Heuristic (basic) test shows parameter 'id' might be injectable</div>
+            <div class="t-err">[CRITICAL] Parameter 'id' is vulnerable!</div>
+            <div class="t-output">&nbsp;</div>
+            <div class="t-comment"># Applying secure parameterized query fix</div>
+            <div class="t-prompt">$ <span class="t-cmd">node apply-patch.js --type=prepared-stmt</span></div>
+            <div class="t-ok">[✓] Patch applied successfully</div>
+            <div class="t-ok">[✓] Re-test: No vulnerabilities detected</div>
+            <div class="t-ok">[✓] WAF rules updated</div>
+            <div class="t-output">&nbsp;</div>
+            <div class="t-comment"># Continuous security monitoring active</div>
+            <div class="t-prompt" id="term-blink">$ <span style="color:var(--cyan)">_</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-items">
+        <div class="sec-item reveal">
+          <div class="sec-item-header">
+            <div class="sec-icon red">🔍</div>
+            <div>
+              <div class="sec-item-title">Penetration Testing</div>
+              <div class="sec-item-sub">OWASP · PTES · MITRE ATT&amp;CK</div>
+            </div>
+          </div>
+          <p style="color:var(--text2);font-size:.88rem;line-height:1.65;margin-top:.75rem">Performed black-box and gray-box assessments on web applications, APIs, and network infrastructure. Identified and responsibly disclosed 40+ vulnerabilities across client engagements.</p>
+          <div class="sec-tags">
+            <span class="ai-tag tag-crit">SQLi</span><span class="ai-tag tag-warn">XSS</span><span class="ai-tag tag-warn">SSRF</span><span class="ai-tag tag-crit">Auth Bypass</span><span class="ai-tag tag-info">IDOR</span>
+          </div>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-icon cyan" style="margin-bottom:.5rem">🛡️</div>
+          <div class="sec-item-title" style="margin-bottom:.25rem">Secure Code Review</div>
+          <div class="sec-item-sub" style="margin-bottom:.75rem">SAST · Threat Modeling · Code Hardening</div>
+          <p style="color:var(--text2);font-size:.88rem;line-height:1.65;margin-bottom:1rem">Before/after vulnerability remediation in production code:</p>
+          <div class="before-after">
+            <div class="ba-box ba-before">
+              <div class="ba-label">❌ Vulnerable</div>
+              <div class="ba-code" style="color:var(--pink)">`SELECT * FROM users<br>WHERE id='${userId}'`</div>
+            </div>
+            <div class="ba-box ba-after">
+              <div class="ba-label">✅ Hardened</div>
+              <div class="ba-code" style="color:var(--green)">`db.query('SELECT * FROM<br>users WHERE id=?',[id])`</div>
+            </div>
+          </div>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-icon gold" style="margin-bottom:.5rem">⚡</div>
+          <div class="sec-item-title" style="margin-bottom:.25rem">Threat Analysis & Response</div>
+          <div class="sec-item-sub" style="margin-bottom:.75rem">SIEM · IDS/IPS · Incident Response</div>
+          <p style="color:var(--text2);font-size:.88rem;line-height:1.65">Built automated threat detection pipelines processing 50k+ events/sec with ML-based anomaly detection, reducing MTTD from 4 hours to under 3 minutes.</p>
+          <div class="sec-tags">
+            <span class="ai-tag tag-info">Splunk</span><span class="ai-tag tag-info">ELK Stack</span><span class="ai-tag tag-fix">Snort</span><span class="ai-tag tag-warn">YARA Rules</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="section-title reveal">Proof-Based <span>Capabilities</span></h2>
+    <p class="section-desc reveal">Not star ratings — real results from production systems.</p>
+    <div class="skills-grid">
+      <div class="skill-item reveal">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-content">
+          <div class="skill-name">React / TypeScript</div>
+          <div class="skill-proof">Built real-time dashboards handling <strong>10k+ updates/min</strong> with consistent 60fps across 500 concurrent users using virtual DOM optimization.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon pink">🔴</div>
+        <div class="skill-content">
+          <div class="skill-name">Node.js / Python</div>
+          <div class="skill-proof">Architected microservices processing <strong>1M+ daily requests</strong> with sub-100ms p99 latency using event-loop optimization and worker threads.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon gold">🌐</div>
+        <div class="skill-content">
+          <div class="skill-name">WebSockets / Real-Time</div>
+          <div class="skill-proof">Engineered bidirectional streaming systems sustaining <strong>500+ simultaneous connections</strong> with custom heartbeat/reconnect logic and zero message loss.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon purple">🔐</div>
+        <div class="skill-content">
+          <div class="skill-name">Cybersecurity</div>
+          <div class="skill-proof">Identified <strong>40+ critical CVEs</strong> across client platforms. Reduced attack surface by 78% through threat modeling and hardened authentication flows.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-content">
+          <div class="skill-name">Database Architecture</div>
+          <div class="skill-proof">Optimized slow queries from <strong>4.2s → 38ms</strong> via indexing strategy, query plan analysis, and connection pooling for PostgreSQL + MongoDB.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon pink">🐳</div>
+        <div class="skill-content">
+          <div class="skill-name">DevOps / Docker / CI/CD</div>
+          <div class="skill-proof">Cut deployment time from <strong>45 minutes → 4 minutes</strong> with containerized pipelines, zero-downtime blue-green deployments on AWS/Render.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon gold">📊</div>
+        <div class="skill-content">
+          <div class="skill-name">Algorithmic Trading</div>
+          <div class="skill-proof">Developed multi-strategy bots executing <strong>340ms average order fill</strong> with Sharpe ratio of 2.1 across 18-month backtesting period.</div>
+        </div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon purple">🤖</div>
+        <div class="skill-content">
+          <div class="skill-name">AI / ML Integration</div>
+          <div class="skill-proof">Integrated LLM-powered anomaly detection reducing <strong>false positives by 65%</strong> in security monitoring pipeline vs. rule-based approach.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="container">
+    <div class="section-label reveal">Deep Dives</div>
+    <h2 class="section-title reveal">Engineering <span>Case Studies</span></h2>
+    <p class="section-desc reveal">The full story behind the most complex problems solved.</p>
+    <div class="case-list">
+
+      <div class="case-item reveal" id="case1">
+        <div class="case-header" onclick="toggleCase('case1')">
+          <div class="case-num">01</div>
+          <div class="case-meta">
+            <div class="case-title">Trading Bot: Eliminating Race Conditions Under Load</div>
+            <div class="case-sub">Distributed Systems · Financial Engineering · Redis · Node.js</div>
+          </div>
+          <div class="case-arrow">▶</div>
+        </div>
+        <div class="case-body" id="case1-body">
+          <div class="case-grid">
+            <div class="case-col">
+              <div class="case-col-label">🔴 Problem</div>
+              <div class="case-col-text">Concurrent order placement across 3 exchanges caused <strong>duplicate fills</strong> during market spikes, resulting in 12% account drawdown in a single session. Latency exceeded 2s under load.</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">🧠 Approach</div>
+              <div class="case-col-text">Analyzed lock contention patterns with distributed tracing. Identified 3 critical race windows. Designed <strong>idempotent order execution</strong> with distributed lock acquisition.</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">⚙️ Tech Used</div>
+              <div class="case-col-text"><strong>Redis SETNX</strong> for distributed locks · <strong>Circuit Breaker</strong> pattern (Opossum) · <strong>Prometheus</strong> metrics · <strong>UUID v4</strong> idempotency keys</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">📈 Result</div>
+              <div class="case-col-text">Duplicate fills: <strong>100% eliminated</strong>. Order latency: 2.1s → <strong>340ms</strong>. System now handles 200 concurrent orders with zero data races across a 14-month production run.</div>
+            </div>
+          </div>
+          <div class="case-results">
+            <div class="case-result-chip"><span class="crc-icon">✓</span><span class="crc-text">0 duplicate fills in 14 months</span></div>
+            <div class="case-result-chip"><span class="crc-icon">⚡</span><span class="crc-text">84% latency reduction</span></div>
+            <div class="case-result-chip"><span class="crc-icon">📈</span><span class="crc-text">27% ROI improvement</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-item reveal" id="case2">
+        <div class="case-header" onclick="toggleCase('case2')">
+          <div class="case-num">02</div>
+          <div class="case-meta">
+            <div class="case-title">Security Scanner: Stealth Scanning at Scale</div>
+            <div class="case-sub">Network Security · Python · Async · Rate Limiting</div>
+          </div>
+          <div class="case-arrow">▶</div>
+        </div>
+        <div class="case-body" id="case2-body">
+          <div class="case-grid">
+            <div class="case-col">
+              <div class="case-col-label">🔴 Problem</div>
+              <div class="case-col-text">Scanning 10,000+ hosts concurrently triggered IDS alerts within 90 seconds. Aggressive scanning caused <strong>network saturation</strong> and target system instability during assessments.</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">🧠 Approach</div>
+              <div class="case-col-text">Studied IDS signature patterns and rate thresholds. Built adaptive throttling that monitors ICMP unreachables and TCP RSTs as feedback signals for rate control.</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">⚙️ Tech Used</div>
+              <div class="case-col-text"><strong>asyncio</strong> semaphores · <strong>Scapy</strong> for packet crafting · <strong>Token bucket</strong> algorithm · <strong>Exponential backoff</strong> · Randomized TTL/source ports</div>
+            </div>
+            <div class="case-col">
+              <div class="case-col-label">📈 Result</div>
+              <div class="case-col-text">Detection rate: 0% IDS triggers during stealth scans. Coverage: 10k hosts in <strong>8 minutes</strong> vs. 45 minutes before. Accuracy improved to <strong>94%</strong> with ML-based classification.</div>
+            </div>
+          </div>
+          <div class="case-results">
+            <div class="case-result-chip"><span class="crc-icon">🕵️</span><span class="crc-text">0% IDS detection rate</span></div>
+            <div class="case-result-chip"><span class="crc-icon">⚡</span><span class="crc-text">82% faster scanning</span></div>
+            <div class="case-result-chip"><span class="crc-icon">🎯</span><span class="crc-text">94% vulnerability accuracy</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Let's Build <span>Something</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="contact-intro">Looking for a developer who thinks about security, performance, and scale from day one? Let's talk. I'm available for full-time remote roles, contract work, and security consulting.</p>
+        <div class="contact-links">
+          <a href="mailto:davidjoel0004@gmail.com" class="contact-link">
+            <div class="cl-icon" style="background:var(--pink-dim)">✉</div>
+            <div><div class="cl-label">Email</div><div class="cl-value">davidjoel0004@gmail.com</div></div>
+          </a>
+          <a href="https://t.me/@Basedapecalls001" class="contact-link">
+            <div class="cl-icon" style="background:var(--cyan-dim)">✈</div>
+            <div><div class="cl-label">Telegram</div><div class="cl-value">https://t.me/@Basedapecalls001</div></div>
+          </a>
+          <a href="https://github.com/DAVIDjoel12345" class="contact-link">
+            <div class="cl-icon" style="background:rgba(255,255,255,0.05)">⌥</div>
+            <div><div class="cl-label">GitHub</div><div class="cl-value">https://github.com/DAVIDjoel12345</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/david-joel-41001b295" class="contact-link">
+            <div class="cl-icon" style="background:rgba(10,102,194,0.15)">in</div>
+            <div><div class="cl-label">LinkedIn</div><div class="cl-value">https://www.linkedin.com/in/david-joel-41001b295</div></div>
+          </a>
+        </div>
+        <div style="background:var(--green-dim);border:1px solid rgba(0,230,118,0.25);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem">
+          <span style="font-size:1.2rem">🌍</span>
+          <div>
+            <div style="font-weight:700;font-size:.9rem;color:var(--green)">Available for Remote Work</div>
+            <div style="font-size:.8rem;color:var(--text3);font-family:var(--font-mono)">Open to global opportunities · CET+1 timezone</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-row">
+            <label>ENTER NAME OR COMPANY NAME</label>
+            <input type="text" id="f-name" placeholder="DAVID JOEL">
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="davidjoel0004@gmail.com">
+          </div>
+          <div class="form-row">
+            <label>Opportunity Type</label>
+            <select id="f-type" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text1);font-family:var(--font-body);font-size:.9rem;width:100%;outline:none">
+              <option value="">Select type...</option>
+              <option>Full-time Role</option>
+              <option>Contract/Freelance</option>
+              <option>Security Consultation</option>
+              <option>Open Source Collaboration</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Message</label>
+            <textarea id="f-message" placeholder="Tell me about the project or role..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+          <div class="form-success" id="form-success">✓ Message sent! I'll reply within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">Built with ⚡ precision by <span>DAVID JOEL</span> · <span>2024</span> · All systems nominal</div>
+</footer>
+
+<!-- AI CHATBOT -->
+<button class="chat-trigger" id="chat-trigger" onclick="toggleChat()" title="Ask about my work">🤖</button>
+<div class="chat-window" id="chat-window">
+  <div class="chat-head">
+    <div class="chat-head-info">
+      <div class="chat-avatar">🤖</div>
+      <div>
+        <div class="chat-head-name">Portfolio AI</div>
+        <div class="chat-head-status">● Online — ask me anything</div>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg msg-bot">👋 Hi! I'm an AI trained on this developer's background. Ask me about projects, experience, tech stack, or availability!</div>
+  </div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="chat-suggest" onclick="sendSuggestion(this)">Trading bot details</button>
+    <button class="chat-suggest" onclick="sendSuggestion(this)">Security experience</button>
+    <button class="chat-suggest" onclick="sendSuggestion(this)">Available for hire?</button>
+    <button class="chat-suggest" onclick="sendSuggestion(this)">Tech stack</button>
+  </div>
+  <div class="chat-typing" id="chat-typing" style="display:none">
+    <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" placeholder="Ask about projects, skills..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" id="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are a helpful portfolio AI assistant for a developer known as "Your Name" (replace this in production). 
+You answer questions about their background, projects, and skills based on the following facts:
+
+PROFILE:
+- Computer Programmer & Cybersecurity Specialist with 3+ years experience
+- Available for remote work globally
+- Specializes in secure real-time systems and financial engineering
+
+PROJECTS:
+1. Algorithmic Trading Bot: Node.js, WebSockets, Redis, PostgreSQL. Handles 200 concurrent orders at 340ms avg latency. 27% ROI. 99.9% uptime. Solved distributed race conditions using Redis SETNX distributed locks.
+2. Vulnerability Scanner: Python, Nmap, Shodan, MongoDB, FastAPI. Scans 10k+ hosts in 8 minutes. 94% detection accuracy. 2400 CVEs processed daily. Achieved 0% IDS detection during stealth scans.
+3. Real-Time Dashboard: React, TypeScript, WebSockets, Kafka, InfluxDB. Handles 10k+ updates/min from 500 concurrent clients. 45ms p99 latency. Consistent 60fps via Web Workers and ring buffer architecture.
+
+SECURITY EXPERIENCE:
+- Penetration testing (OWASP Top 10, PTES, MITRE ATT&CK)
+- Identified 40+ critical CVEs across client engagements
+- Reduced MTTD from 4 hours to under 3 minutes using ML anomaly detection
+- Secure code review and threat modeling
+
+TECH STACK: React, TypeScript, Node.js, Python, WebSockets, Redis, PostgreSQL, MongoDB, Docker, AWS, Kafka, InfluxDB, Splunk, Nmap
+
+CONTACT: Open to full-time remote roles, contract, and security consulting.
+
+Keep answers concise (2-4 sentences max), technical when appropriate, and always relate back to specific projects or metrics when possible.`;
+
+// ---- PARTICLE SYSTEM ----
+(function initParticles() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [], mouse = {x: -999, y: -999};
+  const COUNT = 80, MAX_DIST = 120;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  canvas.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - .5) * .4,
+      vy: (Math.random() - .5) * .4,
+      r: Math.random() * 2 + 1
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 80) { p.x += dx/d*.8; p.y += dy/d*.8; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(0,229,255,0.5)';
+      ctx.fill();
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i+1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x-b.x, dy = a.y-b.y, d = Math.sqrt(dx*dx+dy*dy);
+        if (d < MAX_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(0,229,255,${.18*(1-d/MAX_DIST)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ---- TYPING EFFECT ----
+(function initTyping() {
+  const el = document.getElementById('typed-text');
+  const phrases = [
+    'secure, real-time systems.',
+    'scalable backend APIs.',
+    'penetration testing tools.',
+    'trading algorithms.',
+    'fault-tolerant architectures.'
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  function tick() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(tick, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi+1) % phrases.length; }
+    }
+    setTimeout(tick, deleting ? 45 : 75);
+  }
+  tick();
+})();
+
+// ---- SCROLL REVEAL ----
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- COUNTER ANIMATION ----
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const duration = 1500;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.floor(current);
+      if (current >= target) clearInterval(timer);
+    }, 16);
+    counterObs.unobserve(el);
+  });
+}, {threshold: .5});
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+// ---- NAV ----
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('mobile-open');
+}
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('nav-links').classList.remove('mobile-open');
+}));
+
+// ---- LIVE ACTIVITY ----
+const commits = [
+  {tag:'push',msg:'feat: add distributed lock to order executor'},
+  {tag:'fix',msg:'fix: resolve WebSocket reconnect memory leak'},
+  {tag:'push',msg:'feat: implement adaptive rate limiting'},
+  {tag:'fix',msg:'fix: correct JWT expiry edge case'},
+  {tag:'push',msg:'refactor: extract threat detector to service'},
+  {tag:'warn',msg:'chore: update dependencies (3 CVEs patched)'},
+  {tag:'push',msg:'feat: add ring buffer for time-series data'},
+  {tag:'fix',msg:'perf: reduce React re-renders by 60%'},
+  {tag:'push',msg:'feat: WebSocket heartbeat with backoff'},
+  {tag:'crit',msg:'security: patch SSRF in image proxy'},
+  {tag:'info',msg:'docs: update API security guidelines'},
+  {tag:'push',msg:'feat: ML anomaly scoring pipeline'}
+];
+const logs = [
+  {lvl:'ok', msg:'POST /api/orders 200 — 34ms'},
+  {lvl:'ok', msg:'GET /api/market/BTC 200 — 12ms'},
+  {lvl:'warn', msg:'Rate limit approaching: 87% capacity'},
+  {lvl:'ok', msg:'WebSocket client connected (conn #2847)'},
+  {lvl:'ok', msg:'Scan complete: 0 critical findings'},
+  {lvl:'err', msg:'Blocked: SQLi attempt on /api/user'},
+  {lvl:'ok', msg:'Auth: JWT verified — 4ms'},
+  {lvl:'warn', msg:'Unusual traffic from AS12345 — monitoring'},
+  {lvl:'ok', msg:'DB query optimized: 4200ms → 38ms'},
+  {lvl:'ok', msg:'Deploy: trading-bot-v2 healthy'},
+  {lvl:'err', msg:'XSS payload intercepted & logged'},
+  {lvl:'ok', msg:'Backup complete: 1.2GB encrypted'}
+];
+
+function timeAgo(sec) {
+  if (sec < 60) return sec+'s ago';
+  if (sec < 3600) return Math.floor(sec/60)+'m ago';
+  return Math.floor(sec/3600)+'h ago';
+}
+
+let commitAge = 5;
+let logAge = 2;
+const commitFeed = document.getElementById('commit-feed');
+const logFeed = document.getElementById('log-feed');
+
+function addCommit() {
+  const item = commits[Math.floor(Math.random()*commits.length)];
+  const div = document.createElement('div');
+  div.className = 'activity-item';
+  div.innerHTML = `<span class="ai-time">just now</span><span class="ai-msg"><span class="ai-tag tag-${item.tag}">${item.tag.toUpperCase()}</span>${item.msg}</span>`;
+  commitFeed.insertBefore(div, commitFeed.firstChild);
+  if (commitFeed.children.length > 8) commitFeed.removeChild(commitFeed.lastChild);
+}
+
+function addLog() {
+  const item = logs[Math.floor(Math.random()*logs.length)];
+  const div = document.createElement('div');
+  div.className = 'log-line';
+  const t = new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  div.innerHTML = `<span class="log-time">${t}</span><span class="log-level-${item.lvl}">[${item.lvl.toUpperCase()}]</span><span class="log-msg">${item.msg}</span>`;
+  logFeed.insertBefore(div, logFeed.firstChild);
+  if (logFeed.children.length > 9) logFeed.removeChild(logFeed.lastChild);
+}
+
+for (let i = 0; i < 5; i++) addCommit();
+for (let i = 0; i < 7; i++) addLog();
+setInterval(addCommit, 3500);
+setInterval(addLog, 2000);
+
+// ---- PROJECT CANVASES ----
+function drawTradingChart() {
+  const c = document.getElementById('canvas-trading');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const w = c.width, h = c.height;
+  ctx.fillStyle = '#050510';
+  ctx.fillRect(0, 0, w, h);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(0,229,255,0.06)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+  for (let y = 0; y < h; y += 30) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+
+  // Candlesticks
+  const candles = 22;
+  const cw = Math.floor(w / candles);
+  let price = 130;
+  for (let i = 0; i < candles; i++) {
+    const open = price;
+    const change = (Math.random() - .45) * 18;
+    const close = open + change;
+    const high = Math.max(open, close) + Math.random() * 8;
+    const low = Math.min(open, close) - Math.random() * 8;
+    price = close;
+    const x = i * cw + cw/2;
+    const bullish = close >= open;
+    ctx.strokeStyle = bullish ? '#00e676' : '#ff2055';
+    ctx.fillStyle = bullish ? 'rgba(0,230,118,0.7)' : 'rgba(255,32,85,0.7)';
+    const toY = v => h - (v / 200) * h * .7 - h * .15;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, toY(high)); ctx.lineTo(x, toY(low)); ctx.stroke();
+    ctx.fillRect(x - cw/2*.6, toY(Math.max(open,close)), cw*.6, Math.max(2, Math.abs(toY(open)-toY(close))));
+  }
+
+  // Buy/sell signals
+  ctx.fillStyle = '#00e5ff';
+  ctx.font = '11px monospace';
+  ctx.fillText('▲ BUY', 40, h-15);
+  ctx.fillText('▼ SELL', w-80, 20);
+  ctx.fillStyle = 'rgba(0,229,255,0.15)';
+  ctx.fillRect(0, h-24, 75, 18);
+}
+
+function drawSecurityViz() {
+  const c = document.getElementById('canvas-security');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const w = c.width, h = c.height;
+  ctx.fillStyle = '#05050f';
+  ctx.fillRect(0, 0, w, h);
+
+  // Animated scan lines
+  const nodes = [{x:80,y:90,c:'#ff2055',l:'EXPLOIT'},{x:200,y:50,c:'#ffc837',l:'SCAN'},{x:320,y:100,c:'#00e5ff',l:'DETECT'},{x:240,y:140,c:'#00e676',l:'PATCH'},{x:150,y:140,c:'#bf5af2',l:'REPORT'}];
+  nodes.forEach((n,i) => {
+    nodes.forEach((m,j) => {
+      if (j > i) {
+        ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y);
+        ctx.strokeStyle = 'rgba(0,229,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
+      }
+    });
+  });
+  nodes.forEach(n => {
+    ctx.beginPath(); ctx.arc(n.x, n.y, 22, 0, Math.PI*2);
+    ctx.fillStyle = n.c+'22'; ctx.fill();
+    ctx.strokeStyle = n.c+'88'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = n.c; ctx.font = 'bold 9px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(n.l, n.x, n.y);
+  });
+
+  // CVE counter
+  ctx.fillStyle = 'rgba(255,32,85,0.15)';
+  ctx.fillRect(w-130, 10, 120, 50);
+  ctx.strokeStyle = 'rgba(255,32,85,0.4)'; ctx.lineWidth=1; ctx.strokeRect(w-130,10,120,50);
+  ctx.fillStyle = '#ff2055'; ctx.font = 'bold 22px monospace'; ctx.textAlign = 'center';
+  ctx.fillText('2,847', w-70, 35);
+  ctx.fillStyle = 'rgba(255,32,85,0.7)'; ctx.font = '9px monospace';
+  ctx.fillText('CVEs SCANNED TODAY', w-70, 50);
+  ctx.textAlign = 'left';
+}
+
+function drawDashboard() {
+  const c = document.getElementById('canvas-dashboard');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const w = c.width, h = c.height;
+  ctx.fillStyle = '#050510';
+  ctx.fillRect(0, 0, w, h);
+
+  // Mini bar chart
+  const bars = [42,78,55,91,68,84,73,96,61,88,75,100];
+  const bw = Math.floor(w/2/bars.length) - 3;
+  bars.forEach((v,i) => {
+    const bh = (v/100) * (h-40);
+    const x = 20 + i*(bw+3);
+    const y = h-20-bh;
+    const grad = ctx.createLinearGradient(0,y,0,h);
+    grad.addColorStop(0,'rgba(0,229,255,0.9)');
+    grad.addColorStop(1,'rgba(0,229,255,0.1)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(x, y, bw, bh);
+  });
+
+  // Mini line chart
+  const pts = [60,75,55,90,72,88,95,68,84,100,78,92];
+  ctx.beginPath();
+  pts.forEach((v,i) => {
+    const x = w/2 + 20 + i*(w/2-40)/pts.length;
+    const y = h-20 - (v/100)*(h-40);
+    i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  });
+  ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 2; ctx.stroke();
+
+  // Fill under line
+  const lastX = w/2+20+(pts.length-1)*(w/2-40)/pts.length;
+  ctx.lineTo(lastX, h-20); ctx.lineTo(w/2+20, h-20); ctx.closePath();
+  ctx.fillStyle = 'rgba(0,229,255,0.07)'; ctx.fill();
+
+  // Labels
+  ctx.fillStyle = 'rgba(0,229,255,0.5)';
+  ctx.font = '10px monospace';
+  ctx.fillText('REQUESTS/MIN', 20, 15);
+  ctx.fillText('LATENCY (ms)', w/2+20, 15);
+
+  // Metrics
+  ctx.fillStyle = '#00e676';
+  ctx.font = 'bold 14px monospace';
+  ctx.textAlign = 'right';
+  ctx.fillText('12,847 req/min', w-10, h-5);
+  ctx.textAlign = 'left';
+}
+
+drawTradingChart(); drawSecurityViz(); drawDashboard();
+
+// ---- CHALLENGE TOGGLE ----
+function toggleChallenge(btn) {
+  const content = btn.nextElementSibling;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open');
+  btn.textContent = (isOpen ? '▶' : '▼') + ' Engineering Challenges';
+}
+
+// ---- CASE STUDY TOGGLE ----
+function toggleCase(id) {
+  const item = document.getElementById(id);
+  const body = document.getElementById(id+'-body');
+  item.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ---- CONTACT FORM ----
+function submitForm() {
+  const btn = document.querySelector('.form-submit');
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg = document.getElementById('f-message').value.trim();
+  if (!name || !email || !msg) {
+    btn.textContent = '⚠ Please fill all fields';
+    setTimeout(() => btn.textContent = 'Send Message →', 2000);
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  setTimeout(() => {
+    btn.textContent = '✓ Sent!';
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Message →'; }, 3000);
+  }, 1200);
+}
+
+// ---- AI CHATBOT ----
+let chatHistory = [];
+let chatOpen = false;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('chat-window');
+  const btn = document.getElementById('chat-trigger');
+  win.classList.toggle('open', chatOpen);
+  btn.textContent = chatOpen ? '✕' : '🤖';
+}
+
+function sendSuggestion(btn) {
+  const text = btn.textContent;
+  document.getElementById('chat-suggestions').style.display = 'none';
+  appendMsg(text, 'user');
+  callAI(text);
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  document.getElementById('chat-suggestions').style.display = 'none';
+  appendMsg(text, 'user');
+  await callAI(text);
+}
+
+function appendMsg(text, role) {
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `chat-msg msg-${role === 'user' ? 'user' : 'bot'}`;
+  div.textContent = text;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function callAI(userMsg) {
+  chatHistory.push({role:'user', content: userMsg});
+  const send = document.getElementById('chat-send');
+  const typing = document.getElementById('chat-typing');
+  send.disabled = true;
+  typing.style.display = 'flex';
+  document.getElementById('chat-messages').scrollTop = 99999;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Sorry, I had trouble connecting. Try again!';
+    chatHistory.push({role:'assistant', content: reply});
+    typing.style.display = 'none';
+    appendMsg(reply, 'bot');
+  } catch(err) {
+    typing.style.display = 'none';
+    appendMsg("Couldn't reach AI. Check network and try again.", 'bot');
+  }
+  send.disabled = false;
+}
+</script>
+</body>
+</html>
